@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Objects
+        </title>
+    </head>
+    <body>
+
+        <script>
+            /*
+            const product = {
+                name: 'socks', 
+                price: 1090,
+                birthday: '04-10-2002'
+            };
+            console.log(product);
+            console.log(product.birthday)
+            console.log(product.price);
+            product.price = 1000
+            console.log(product.price)
+            product.newProperty = 'Glendale'
+            console.log(product.newProperty)
+            console.log(product)
+            delete product.newProperty
+            console.log(product)
+            console.log(typeof product)
+            */
+
+            /*
+            const product2 = {
+                name: 'shirt',
+                'delivery-time': '1 day',
+                rating: {
+                    stars: 4.5,
+                    count: 87
+                },
+                fun: function function1() {
+                    console.log('function inside object')
+                }
+            };
+            console.log(product2);
+            console.log(product2.name);
+            console.log(product2['name']);
+            console.log(product2['delivery-time']);
+            //use [] instead of . if there is a - in the object name, cuz js thinks its doing math
+            console.log(product2.rating.count);
+            product2.fun();
+            console.log(typeof console.log);
+            //console is an object, log is a function inside an object
+                //this type of function is called a method
+            //Math.random() --> Math is an object, random is a function in the object, so random is a method
+            console.log(JSON.stringify(product2));
+            //JSON is an object. it is basically Javascript object Notation - its used because its almost univeral across languages
+            //stringify is a method in the object JSON, it converts javascript objects to a string that is in JSON notation
+            console.log(JSON.parse(JSON.stringify(product2)));
+            //parse is a method in JSON that turns a JSON into a javascript object
+            */
+
+            console.log('hello'.length);
+            console.log('hello'.toUpperCase());
+
+            const object1 = {
+                message: 'hello'
+            };
+            const object2 = object1;
+
+            object1.message = 'Good job!';
+            console.log(object1);
+            console.log(object2);
+
+
+            const object3 = {
+                message: 'Good job!'
+            };
+            console.log(object1 === object3);
+            console.log(object2 === object1);
+
+            const object4 = {
+                message: 'Good job!',
+                price: 799
+            };
+            //const message = object4.message;
+            //this line below is the same thing as just above
+            const {message, price} = object4;
+            console.log(message);
+            console.log(price);
+
+            const object5 = {
+                //message: message
+                message,
+                method: function function1() {
+                    console.log('method');
+                }
+            };
+            console.log(object5);
+            object5.method();
+
+        </script>
+
+    </body>
+</html>
