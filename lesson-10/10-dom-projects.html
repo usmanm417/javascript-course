@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            DOM-Projects
+        </title>
+        <style>
+            body {
+                font-family: Arial;
+                font-size: 20px;
+            }
+
+            .subscribe-button {
+                border: none;
+                background-color: black;
+                color: white;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 15px;
+                padding-right: 15px;
+                border-radius: 50px;
+                font-weight: bold;
+                cursor: pointer;
+                margin-bottom: 30px;
+            }
+
+            .is-subscribed {
+                background-color: rgb(240, 240, 240);
+                color: black;
+            }
+
+            .cost-input {
+                font-size: 15px;
+                padding: 10px;
+            }
+
+            .calculate-button {
+                background-color: green;
+                color: white;
+                padding: 12px 15px;
+                border: none;
+                font-size: 15px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Youtube Subscribe Button</p>
+        <button onclick="
+            subscribe();
+        " class="js-subscribe-button subscribe-button">Subscribe</button>
+
+        <p>Amazon Shipping Calculator</p>
+
+        <input placeholder="Cost of Order"
+        class="js-cost-input cost-input" onkeydown="
+            handleCostKeyDown(event);
+        ">
+
+
+        <button onclick="
+            calculateTotal()
+        " class="calculate-button">Calculate</button>
+
+        <p class="js-total-cost"></p>
+
+        <script>
+            String() //Converts a value into a string
+            Number() //Converts a value into an interger/number
+            console.log('25' - 5) //this gives the NUMBER 20
+            console.log('25' + 5) //this gives the STRING 255
+
+
+            function handleCostKeyDown(event) {
+                if (event.key === 'Enter') {
+                    calculateTotal();
+                }
+            }
+
+            function calculateTotal() {
+                const inputElement = document.querySelector('.js-cost-input');
+                let cost = Number(inputElement.value);
+                //the dom automatically makes things strings, so to do math we need to convert it into an int with Number()
+
+                if (cost < 40) {
+                    cost += 10;
+                }
+
+                document.querySelector('.js-total-cost')
+                    .innerHTML = `$${cost}`;
+            }
+
+            function subscribe() {
+                const buttonElement = document.querySelector('.js-subscribe-button');
+                //document.querySelector gets the specified class/element(button, p...) and allows us to use it in javascript
+                //it automatically takes everything as a string, so if doing math, make sure to convert to Number()
+                //to get the actual text of teh element do (...).innerHTML
+                //for input elements, dont use innerHTML, use (...).value
+
+                if (buttonElement.innerText === 'Subscribe') {
+                    buttonElement.innerHTML = 'Subscribed';
+                    buttonElement.classList.add('is-subscribed');
+                    //this line adds a class to the button
+                } else {
+                    buttonElement.innerHTML = 'Subscribe';
+                    buttonElement.classList.remove('is-subscribed');
+                }
+            }
+        </script>
+
+    </body>
+</html>
