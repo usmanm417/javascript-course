@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Heads or Tails</title>
+    </head>
+    <body>
+
+        <button class="js-heads" onclick="
+            getResult();
+        ">heads</button>
+        
+        <button class="js-tails" onclick="
+            getResult();
+        ">tails</button>
+        
+        <p class="js-result"></p>
+
+        <input class="js-name-input" onkeydown="displayNameKeyDown(event)"> 
+        
+        <p class="js-name"></p>
+        
+        
+        <script>
+            const outcome = Math.random();
+            let result = 'not flipped yet';
+            
+            function getResult() {
+                const outcome = Math.random();
+                console.log(outcome);
+                if (outcome < 0.5) {
+                    result = 'heads';
+                } else if (outcome >= 0.5) {
+                    result = 'tails';
+                }
+                document.querySelector('.js-result').innerHTML = `Result: ${result}`
+                result = 'not flipped yet'
+            }
+
+            function displayNameKeyDown(event) {
+                if (event.key === 'Enter') {
+                    document.querySelector('.js-name').innerHTML = `Your name is ${document.querySelector('.js-name-input').value}`
+                }
+            }
+
+        </script>
+
+    </body>
+</html>

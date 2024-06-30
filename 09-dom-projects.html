@@ -11,9 +11,52 @@
             subscribe();
         " class="js-subscribe-button">Subscribe</button>
 
+        <p>Amazon Shipping Calculator</p>
+
+        <input placeholder="Cost of Order"
+        class="js-cost-input" onkeydown="
+            handleCostKeyDown(event);
+        ">
+
+
+        <button onclick="
+            calculateTotal()
+        ">Calculate</button>
+
+        <p class="js-total-cost"></p>
+
         <script>
+            String() //Converts a value into a string
+            Number() //Converts a value into an interger/number
+            console.log('25' - 5) //this gives the NUMBER 20
+            console.log('25' + 5) //this gives the STRING 255
+
+
+            function handleCostKeyDown(event) {
+                if (event.key === 'Enter') {
+                    calculateTotal();
+                }
+            }
+
+            function calculateTotal() {
+                const inputElement = document.querySelector('.js-cost-input');
+                let cost = Number(inputElement.value);
+                //the dom automatically makes things strings, so to do math we need to convert it into an int with Number()
+
+                if (cost < 40) {
+                    cost += 10;
+                }
+
+                document.querySelector('.js-total-cost')
+                    .innerHTML = `$${cost}`;
+            }
+
             function subscribe() {
                 const buttonElement = document.querySelector('.js-subscribe-button');
+                //document.querySelector gets the specified class/element(button, p...) and allows us to use it in javascript
+                //it automatically takes everything as a string, so if doing math, make sure to convert to Number()
+                //to get the actual text of teh element do (...).innerHTML
+                //for input elements, dont use innerHTML, use (...).value
 
                 if (buttonElement.innerHTML === 'Subscribe') {
                     buttonElement.innerHTML = 'Subscribed';
